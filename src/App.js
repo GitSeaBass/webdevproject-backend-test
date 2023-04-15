@@ -1,9 +1,9 @@
 import './App.css';
 import React, { useState } from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import NavBar from './components/NavBar';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
+import Main from './components/Main';
 
 const DUMMY_ITEMS = [
 {
@@ -76,7 +76,7 @@ const App = () => {
     <Router>
       <div>
         <Routes>
-          <Route exact path='/' element={<NavBar loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} user={currentUser}/>} />
+          <Route exact path='/' element={<Main loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} user={currentUser}/>} />
           <Route path='/login' element={<LoginPage loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} addCurrentUser={addCurrentUser} users={users}/>} />
           <Route path='/signup' element={<SignUpPage users={users} addUsers={addUsers}/>} />
         </Routes>

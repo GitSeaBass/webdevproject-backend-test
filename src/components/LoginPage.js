@@ -31,7 +31,7 @@ function LoginPage(props) {
     }
 
     return (
-        <div className='LoginPage'>
+        <div className='form'>
             <h2 id='loginHeader'>Login</h2>
 
             <form className='login-form'>

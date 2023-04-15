@@ -1,0 +1,14 @@
+#signupHeader {
+    margin: 0 auto;
+    font-size: 2em;
+}
+
+#signupButton {
+    display: block;
+    margin: auto;
+    height: 40px;
+    width: 80%;
+    border-radius: 100px;
+    border: 1px solid black;
+    font-size: 1em;
+}

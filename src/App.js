@@ -52,6 +52,11 @@ const App = () => {
   }
 
   const[users, setUsers] = useState(DUMMY_USERS);
+  const addUsers = (newUser) => {
+    setUsers(() => {
+      return [newUser, ...users];
+    });
+  }
 
   const[currentUser, setCurrentUser] = useState('');
   const addCurrentUser = (newUser) => {
@@ -73,7 +78,7 @@ const App = () => {
         <Routes>
           <Route exact path='/' element={<NavBar loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} user={currentUser}/>} />
           <Route path='/login' element={<LoginPage loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} addCurrentUser={addCurrentUser} users={users}/>} />
-          <Route path='/signup' element={<SignUpPage />} />
+          <Route path='/signup' element={<SignUpPage users={users} addUsers={addUsers}/>} />
         </Routes>
       </div>
     </Router>

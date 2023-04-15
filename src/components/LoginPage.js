@@ -9,20 +9,24 @@ function LoginPage(props) {
         pass: '',
     });*/
 
+    // setting entered username and password as state
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    // sets username
     const addUsername = (e) => {
         setUsername(e.target.value);
     }
 
+    // sets password
     const addPassword = (e) => {
         setPassword(e.target.value);
     }
 
+    // boolean if entered correct credentrials as state
     const [validCred, setValidCred] = useState(false);
     const onSubmit = () => {
-        setValidCred(() => {
+        setValidCred(() => { // checks if entered username and password are in DUMMYUSERS
             if (props.users.some(item => item.user === username && item.pass === password)) {
                 return true;            
             }
@@ -42,7 +46,8 @@ function LoginPage(props) {
                 <input type="text" id="pass" onChange={addPassword}></input> <br/>
             </form>
 
-            <Link to={validCred ? '/':'.'}>
+            {/*ERROR: currently button requires two clicks to go back to home if creds correct */}
+            <Link to={validCred ? '/':'.'}> {/* if valid creds cahnges link back to home page, otherwise stays on login page*/}
                     <button onClick={() => {
                         onSubmit();
                         props.onLoggedIn(true);

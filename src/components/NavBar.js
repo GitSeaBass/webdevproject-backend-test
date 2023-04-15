@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 
 function NavBar(props) {
 
+    // runs if user logs out
     function isLoggingOut() {
       props.onLoggedIn(false);
     }
@@ -15,7 +16,8 @@ function NavBar(props) {
         </div>
 
         <div className='buttons'>
-        {props.loggedIn ? <p>{props.user}</p>:<></>}
+        {props.loggedIn ? <p>{props.user}</p>:<></>} {/* if logged in, display username, else do not*/}
+          {/* different buttons based on if logged in or not*/}
           {props.loggedIn ? <button className='button'>Create Post</button>:
             <Link to='/login'>
               <button className='button'> Sign In</button>

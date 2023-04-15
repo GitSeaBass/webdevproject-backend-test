@@ -1,6 +1,6 @@
 .NavBar {
     display: flex;
-    position: fixed;
+    position: sticky;
     width: 100%;
     justify-content: space-between;
     padding: 5px 25px 5px 5px;

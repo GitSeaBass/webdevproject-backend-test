@@ -1,6 +1,6 @@
 import './LoginPage.css'
 import {Link} from 'react-router-dom';
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 
 function LoginPage(props) {
     /*//saving entered data
@@ -12,6 +12,8 @@ function LoginPage(props) {
     // setting entered username and password as state
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const u = useRef();
+    const p = useRef();
 
     // sets username
     const addUsername = (e) => {
@@ -21,17 +23,24 @@ function LoginPage(props) {
     // sets password
     const addPassword = (e) => {
         setPassword(e.target.value);
+
     }
 
     // boolean if entered correct credentrials as state
     const [validCred, setValidCred] = useState(false);
+
     const onSubmit = () => {
         setValidCred(() => { // checks if entered username and password are in DUMMYUSERS
-            if (props.users.some(item => item.user === username && item.pass === password)) {
+            if (props.users.some(item => item.user === u.current.value && item.pass === p.current.value)) {
                 return true;            
             }
             return false;
         })
+    }
+
+    const onClear = () => {
+        u.current.value = "";
+        p.current.value = "";
     }
 
     return (
@@ -40,18 +49,19 @@ function LoginPage(props) {
 
             <form className='login-form'>
                 <label >Username</label> <br/>
-                <input type="text" id="user" onChange={addUsername}></input> <br/>
+                <input ref={u} type="text" id="user" onChange={addUsername}></input> <br/>
 
                 <label >Password</label> <br/>
-                <input type="text" id="pass" onChange={addPassword}></input> <br/>
+                <input ref={p} type="text" id="pass" onChange={addPassword}></input> <br/>
             </form>
 
             {/*ERROR: currently button requires two clicks to go back to home if creds correct */}
-            <Link to={validCred ? '/':'.'}> {/* if valid creds cahnges link back to home page, otherwise stays on login page*/}
+            <Link to={'/'}> {/* if valid creds cahnges link back to home page, otherwise stays on login page*/}
                     <button onClick={() => {
                         onSubmit();
                         props.onLoggedIn(true);
                         props.addCurrentUser(username);
+                        
                     }} id='loginButton' className='button'>LOGIN</button>
             </Link>
         </div>

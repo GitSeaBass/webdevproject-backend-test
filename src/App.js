@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import Main from './components/Main';
+import CreateItem from './components/CreateItem';
 
 
 // static arrays 
@@ -105,6 +106,7 @@ const App = () => {
           <Route exact path='/' element={<Main loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} user={currentUser} items={items}/>} />
           <Route path='/login' element={<LoginPage loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} addCurrentUser={addCurrentUser} users={users} addItemHandler={addItemHandler}/>} />
           <Route path='/signup' element={<SignUpPage users={users} addUsers={addUsers}/>} />
+          <Route path = '/create' element={<CreateItem addItemHandler={addItemHandler} currentUser={currentUser}/>} />
         </Routes>
       </div>
     </Router>

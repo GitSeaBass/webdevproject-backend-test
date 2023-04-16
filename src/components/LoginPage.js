@@ -23,7 +23,6 @@ function LoginPage(props) {
     // sets password
     const addPassword = (e) => {
         setPassword(e.target.value);
-
     }
 
     // boolean if entered correct credentrials as state

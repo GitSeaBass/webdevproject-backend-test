@@ -1,11 +1,27 @@
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     margin: 30px 100px;
 }
 
-.grid-container > img {
-    height: 100px;
-    background-size: cover;
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    justify-content: center;
+}
+.card > img {
+    width: 200px;
+    height: 200px;
+    padding-top: 20px;
+    margin: auto;
+}
+
+.card > p {
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

@@ -5,6 +5,7 @@ import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import Main from './components/Main';
 import CreateItem from './components/CreateItem';
+import ImageStats from './components/ImageStats';
 
 
 // static arrays 
@@ -99,6 +100,7 @@ const App = () => {
     });
   }
 
+
   return (
     <Router>
       <div>
@@ -107,6 +109,7 @@ const App = () => {
           <Route path='/login' element={<LoginPage loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} addCurrentUser={addCurrentUser} users={users} addItemHandler={addItemHandler}/>} />
           <Route path='/signup' element={<SignUpPage users={users} addUsers={addUsers}/>} />
           <Route path = '/create' element={<CreateItem addItemHandler={addItemHandler} currentUser={currentUser}/>} />
+          <Route path='/picturestats' element={<ImageStats currentUser={currentUser}/>} />
         </Routes>
       </div>
     </Router>

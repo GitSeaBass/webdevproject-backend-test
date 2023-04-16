@@ -5,6 +5,7 @@ import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import Main from './components/Main';
 import CreateItem from './components/CreateItem';
+import ShowItemDetails from './components/ShowItemDetails';
 
 
 // static arrays 
@@ -41,7 +42,7 @@ const DUMMY_ITEMS = [
   ],
 },
 {
-  id: 'i2', 
+  id: 'i3', 
   title: 'Title',
   description: 'This is a description',
   image: 'https://media.cnn.com/api/v1/images/stellar/prod/170407220916-04-iconic-mountains-matterhorn-restricted.jpg?q=w_2512,h_1413,x_0,y_0,c_fill/w_1280',
@@ -107,6 +108,7 @@ const App = () => {
           <Route path='/login' element={<LoginPage loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} addCurrentUser={addCurrentUser} users={users} addItemHandler={addItemHandler}/>} />
           <Route path='/signup' element={<SignUpPage users={users} addUsers={addUsers}/>} />
           <Route path = '/create' element={<CreateItem addItemHandler={addItemHandler} currentUser={currentUser}/>} />
+          <Route path='show-item/:id' element={<ShowItemDetails items={items}/>}/>
         </Routes>
       </div>
     </Router>

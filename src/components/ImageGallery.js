@@ -1,5 +1,7 @@
 import './ImageGallery.css';
 import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import {Link} from 'react-router-dom';
 
 function ImageGallery(props) {
     const navigate = useNavigate();
@@ -11,11 +13,23 @@ function ImageGallery(props) {
     return (
         <div className="grid-container">
             {/* Mapping all items onto grid */}
-            {props.items.map((item, i) => (    
-                <img src={item.image} alt={item.title} key={item.id} id={item.id} onClick={onClick}/>
+            {props.items.map((item, i) => (
+                <div class="card" onClick={onClick}>
+                    <img id = {item.id} src={item.image} alt={item.title} key={i} onClick={openData(item)} />
+                    <p>{item.title}</p>
+                </div>
             ))}
+                        
         </div>
     );
+}
+
+function openData(card) {
+    <Link to={{
+        pathname: "/imagestats",
+        state: card
+    }}          
+    />
 }
 
 export default ImageGallery;

@@ -11,8 +11,8 @@ function NavBar(props) {
     return (
       <div className='NavBar'>
         <div className='brand'>
-          <img src="" alt="Logo" className='logo'/>
-          <h3>Title</h3>
+          <img src={require('../Images/qp.png')} alt="Logo" className='logo'/>
+          <h3>Quikk Pikks</h3>
         </div>
 
         <div className='buttons'>

@@ -22,7 +22,6 @@ function ShowItemDetails(props) {
     }
 
     const onUpdate = () => {
-        props.deleteItem(id);
         navigate(`/update-item/${id}`);
     }
 

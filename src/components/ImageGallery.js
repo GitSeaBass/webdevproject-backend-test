@@ -15,7 +15,7 @@ function ImageGallery(props) {
             {/* Mapping all items onto grid */}
             {props.items.map((item, i) => (
                 <div className="card" id = {item.id} onClick={onClick} key={item.id}>
-                    <img id = {item.id} src={item.image} alt={item.title} key={i} />
+                    <img id = {item.id} src={item.image} alt={item.title}/>
                     <p>{item.title}</p>
                 </div>
             ))}

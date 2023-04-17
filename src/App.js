@@ -83,6 +83,14 @@ const App = () => {
     })
   }
 
+  const updateItem = (id, newItem) => {
+    setItems(() => {
+      let temp = items.filter((item) => item.id !== id);
+      temp.push(newItem);
+      return temp;
+    })
+  }
+
   // sets DUMMYUSERS as state
   const[users, setUsers] = useState(DUMMY_USERS);
   // given new user, add to users array
@@ -119,7 +127,7 @@ const App = () => {
           <Route path = '/create' element={<CreateItem addItemHandler={addItemHandler} currentUser={currentUser}/>} />
           <Route path='show-item/:id' element={<ShowItemDetails items={items} deleteItem={deleteItem}/>}/>
           <Route path='/picturestats' element={<ImageStats currentUser={currentUser}/>} />
-          <Route path='/update-item/:id' element={<UpdateItem items={items} />}/>
+          <Route path='/update-item/:id' element={<UpdateItem items={items} updateItem={updateItem}/>}/>
         </Routes>
       </div>
     </Router>

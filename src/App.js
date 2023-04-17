@@ -7,6 +7,7 @@ import Main from './components/Main';
 import CreateItem from './components/CreateItem';
 import ShowItemDetails from './components/ShowItemDetails';
 import ImageStats from './components/ImageStats';
+import UpdateItem from './components/UpdateItem';
 
 
 // static arrays 
@@ -76,6 +77,12 @@ const App = () => {
     });
   }
 
+  const deleteItem = (id) => {
+    setItems(() => {
+      return items.filter((item) => item.id !== id);
+    })
+  }
+
   // sets DUMMYUSERS as state
   const[users, setUsers] = useState(DUMMY_USERS);
   // given new user, add to users array
@@ -110,8 +117,9 @@ const App = () => {
           <Route path='/login' element={<LoginPage loggedIn={isLoggedIn} onLoggedIn={onLoggedIn} addCurrentUser={addCurrentUser} users={users} addItemHandler={addItemHandler}/>} />
           <Route path='/signup' element={<SignUpPage users={users} addUsers={addUsers}/>} />
           <Route path = '/create' element={<CreateItem addItemHandler={addItemHandler} currentUser={currentUser}/>} />
-          <Route path='show-item/:id' element={<ShowItemDetails items={items}/>}/>
+          <Route path='show-item/:id' element={<ShowItemDetails items={items} deleteItem={deleteItem}/>}/>
           <Route path='/picturestats' element={<ImageStats currentUser={currentUser}/>} />
+          <Route path='/update-item/:id' element={<UpdateItem items={items} />}/>
         </Routes>
       </div>
     </Router>

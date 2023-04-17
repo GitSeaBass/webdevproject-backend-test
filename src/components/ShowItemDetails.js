@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import {Link, useParams} from 'react-router-dom';
+import { useParams, useNavigate} from 'react-router-dom';
 
 function ShowItemDetails(props) {
     const {id} = useParams();
+    const navigate = useNavigate();
     const [item, setitem] = useState({});
 
     const addItem = () => {
@@ -14,6 +15,16 @@ function ShowItemDetails(props) {
     useEffect(() => {
         addItem();
     });
+
+    const onDelete = () => {
+        props.deleteItem(id);
+        navigate('/');
+    }
+
+    const onUpdate = () => {
+        props.deleteItem(id);
+        navigate(`/update-item/${id}`);
+    }
 
     return (      
         <>
@@ -30,6 +41,9 @@ function ShowItemDetails(props) {
 
             <div>Description</div>
             <div>{item.description}</div>
+
+            <button onClick={onDelete}>Delete </button>
+            <button onClick={onUpdate}>Update Item</button>
         </>
     );
 }

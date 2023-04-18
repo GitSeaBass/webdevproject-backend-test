@@ -1,0 +1,25 @@
+.details {
+    padding: 15px;
+}
+
+.image {
+    width: 500px;
+    padding-bottom: 10px;
+}
+
+.update {
+    background-color: yellow;
+    width: 200px;
+    height: 50px;
+    padding: 15px;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.delete {
+    background-color: red;
+    width: 200px;
+    height: 50px;
+    padding: 15px;
+    margin-bottom: 5px;
+}

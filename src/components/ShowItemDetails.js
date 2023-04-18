@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate} from 'react-router-dom';
+import './ShowItemDetails.css'
+
 
 function ShowItemDetails(props) {
     const {id} = useParams();
@@ -27,22 +29,29 @@ function ShowItemDetails(props) {
 
     return (      
         <>
+        <div className='details'>
             {/* If want to include image*/}
-            {/*}<img src={item.image} alt={item.description}/>{*/}
-            <div>Title</div>
+            <img className='image' src={item.image} alt={item.description}/>
+            <div>Title:</div>
             <div>{item.title}</div>
+            <br></br>
 
-            <div>Date Published</div>
-            <div>{String(item.date)}</div>
-
-            <div>Image URL</div>
-            <div>{item.image}</div>
-
-            <div>Description</div>
+            <div>Description:</div>
             <div>{item.description}</div>
+            <br></br>
 
-            <button onClick={onDelete}>Delete </button>
-            <button onClick={onUpdate}>Update Item</button>
+            <div>Date Published:</div>
+            <div>{String(item.date)}</div>
+            <br></br>
+
+
+            <div>Image URL:</div>
+            <div>{item.image}</div>
+            <br></br>
+
+            <button className='delete' onClick={onDelete}>Delete </button>
+            <button className='update' onClick={onUpdate}>Update Item</button>
+            </div>
         </>
     );
 }

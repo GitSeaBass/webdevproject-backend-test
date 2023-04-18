@@ -19,12 +19,15 @@ function UpdateItem(props) {
     } 
     
     return (
-        <form onSubmit={onSubmit}>
+        <form className = 'form' onSubmit={onSubmit}>
             <label>New Title</label>
             <input type="text" name="title" onChange={addUpdatedItem}></input>
 
             <label>New Description</label>
             <input type="text" name="description" onChange={addUpdatedItem}></input>
+
+            <label>New Image</label>
+            <input type="text" name="image" onChange={addUpdatedItem}></input>
 
             <input type="submit"></input>
         </form>

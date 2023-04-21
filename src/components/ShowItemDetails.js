@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate} from 'react-router-dom';
 import './ShowItemDetails.css'
+import axios from 'axios';
 
 
 function ShowItemDetails(props) {
@@ -8,23 +9,34 @@ function ShowItemDetails(props) {
     const navigate = useNavigate();
     const [item, setitem] = useState({});
 
-    const addItem = () => {
-        setitem(() => {
-            return props.items.find(item => item.id === id);
-        })
-    }
-
     useEffect(() => {
-        addItem();
-    });
+        axios
+            .get(`http://localhost:8082/api/items/${id}`)
+            .then((res) => {
+                setitem(res.data);
+            })
+            .catch(() => {
+                console.log('Error from ShowItemDetails');
+            });
+    }, [id]);
 
     const onDelete = () => {
-        props.deleteItem(id);
-        navigate('/');
+        axios
+            .delete(`http://localhost:8082/api/items/${id}`)
+            .then((res) => {
+                navigate('/');
+            })
+            .catch(() => {
+                console.log('Error from ShowItemDetails');
+            })
     }
 
     const onUpdate = () => {
         navigate(`/update-item/${id}`);
+    }
+
+    function home() {
+        navigate('/');
     }
 
     return (      
@@ -51,6 +63,9 @@ function ShowItemDetails(props) {
 
             <button className='delete' onClick={onDelete}>Delete </button>
             <button className='update' onClick={onUpdate}>Update Item</button>
+
+            {/* temporary return home button */}    
+            <button className='button' onClick={home}>Home</button>
             </div>
         </>
     );

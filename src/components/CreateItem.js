@@ -1,54 +1,45 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './CreateItem.css';
+import axios from "axios";
 
 function CreateItem(props) {
     const navigate = useNavigate();
 
-    const [enteredInfo, setEnteredInfo] = useState({
-        id: createId(), 
+    const [newItem, setNewItem] = useState({
         title: '',
         description: '',
         image: '',
-        date: new Date(),
         user: props.currentUser,
-        comments: [
-            
-        ],
-        likes: [
-            
-        ],
     });
-    
-    // update enteredInfo object
-    const addEnteredInfo = (e) => {
-        setEnteredInfo({...enteredInfo, [e.target.id]: e.target.value});
-    }
+
+    const addNewItem = (e) => {
+        setNewItem({...newItem, [e.target.id]: e.target.value});
+    };
 
     const onSubmit = (e) => {
         e.preventDefault(); // prevent default reload
-        console.log(enteredInfo);
-        props.addItemHandler(enteredInfo);
 
-        navigate('/');
-    }
-
-    function createId() {
-        let x = Math.ceil(Math.random() * 100);
-        let id = 'i' + String(x);
-        return id;
+        axios
+            .post(`http://localhost:8082/api/items`, newItem)
+            .then((res) => {
+                navigate('/');
+            })
+            .catch((err) => {
+                console.log(`Error in CreateItem`);
+            })
     }
 
     return (
         <form className="form" onSubmit={onSubmit}>
             <label>Enter title: </label>
-            <input type="text" id="title" onChange={addEnteredInfo} required></input>
+            <input type="text" id="title" onChange={addNewItem} required></input>
 
             <label>Enter description: </label>
-            <input type="text" id="description" onChange={addEnteredInfo} required></input>
+            <input type="text" id="description" onChange={addNewItem} required></input>
 
             <label>Enter image URL: </label>
-            <input type="text" autoComplete="off" id="image" onChange={addEnteredInfo} required></input>
+            <input type="text" autoComplete="off" id="image" onChange={addNewItem} required></input>
 
             
             <input type="submit"></input>

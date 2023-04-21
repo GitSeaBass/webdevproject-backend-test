@@ -1,7 +1,6 @@
 import './ImageGallery.css';
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
-import {Link} from 'react-router-dom';
 import { useEffect } from 'react';
 import axios from 'axios';
 
@@ -19,7 +18,7 @@ function ImageGallery(props) {
             .get('http://localhost:8082/api/items')
             .then((res) => {
                 setItems(res.data);
-            }) .catch((err) => {
+            }).catch((err) => {
                 console.log('Error from ImageGallery')
             })
     })
@@ -39,12 +38,12 @@ function ImageGallery(props) {
     );
 }
 
-function openData(card) {
+/*function openData(card) {
     <Link to={{
         pathname: "/imagestats",
         state: card
     }}          
     />
-}
+}*/
 
 export default ImageGallery;
